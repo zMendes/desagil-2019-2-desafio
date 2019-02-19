@@ -1,8 +1,11 @@
 package br.pro.hashi.ensino.desagil.desafio;
 
+import java.io.IOException;
+
 public class Desafio {
-    public static void main(String[] args) {
+    public static void main(String[] args) throws IOException {
         Board board = new Board();
+        board.load("board.txt");
 
         Target target = new Target();
         target.row = 4;
