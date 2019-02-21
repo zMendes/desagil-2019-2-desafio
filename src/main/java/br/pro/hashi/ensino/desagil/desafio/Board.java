@@ -39,7 +39,23 @@ public class Board {
             // Note que aqui não faz sentido usar strip ou split.
             String line = reader.readLine();
 
-            System.out.println(line);
+            for (int j = 0; j < numCols; j++) {
+
+                // A instrução switch não existe em Python, mas aqui é como se fosse uma
+                // sequência de if, else ifs e else. Para saber mais, consulte a página
+                // https://docs.oracle.com/javase/tutorial/java/nutsandbolts/switch.html.
+                switch (line.charAt(j)) {
+                    case ' ':
+                        wall[i][j] = false;
+                        break;
+                    case '#':
+                        wall[i][j] = true;
+                        break;
+                    default:
+                        System.err.println("Configuração de tabuleiro deve ter apenas ' ' e '#'");
+                        System.exit(1);
+                }
+            }
         }
 
         reader.close();
