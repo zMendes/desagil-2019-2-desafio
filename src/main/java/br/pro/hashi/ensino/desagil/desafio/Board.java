@@ -13,7 +13,7 @@ public class Board {
     private int numCols;
 
 
-    public void load(String name) throws IOException {
+    public Board(String name) throws IOException {
 
         // Abre um arquivo a partir de seu nome. Espera-se
         // que esse arquivo esteja em src/main/resources.
@@ -59,5 +59,18 @@ public class Board {
         }
 
         reader.close();
+    }
+
+
+    public boolean isWall(int row, int col) {
+        return wall[row][col];
+    }
+
+    public int getNumRows() {
+        return numRows;
+    }
+
+    public int getNumCols() {
+        return numCols;
     }
 }
