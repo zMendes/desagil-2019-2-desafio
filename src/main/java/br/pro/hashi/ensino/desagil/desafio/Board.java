@@ -8,12 +8,12 @@ import java.net.URL;
 import java.util.Objects;
 
 public class Board {
-    boolean[][] wall;
-    int numRows;
-    int numCols;
+    private boolean[][] wall;
+    private int numRows;
+    private int numCols;
 
 
-    void load(String name) throws IOException {
+    public void load(String name) throws IOException {
 
         // Abre um arquivo a partir de seu nome. Espera-se
         // que esse arquivo esteja em src/main/resources.

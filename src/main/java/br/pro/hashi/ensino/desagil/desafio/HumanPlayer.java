@@ -1,23 +1,23 @@
 package br.pro.hashi.ensino.desagil.desafio;
 
 public class HumanPlayer {
-    int row;
-    int col;
-    Board board;
+    public int row;
+    public int col;
+    public Board board;
 
-    void moveUp() {
+    public void moveUp() {
         System.out.println("up");
     }
 
-    void moveRight() {
+    public void moveRight() {
         System.out.println("right");
     }
 
-    void moveDown() {
+    public void moveDown() {
         System.out.println("down");
     }
 
-    void moveLeft() {
+    public void moveLeft() {
         System.out.println("left");
     }
 }

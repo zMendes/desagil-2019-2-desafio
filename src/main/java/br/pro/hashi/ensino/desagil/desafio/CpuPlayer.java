@@ -1,11 +1,11 @@
 package br.pro.hashi.ensino.desagil.desafio;
 
 public class CpuPlayer {
-    int row;
-    int col;
-    Board board;
+    public int row;
+    public int col;
+    public Board board;
 
-    void move() {
+    public void move() {
         System.out.println("move");
     }
 }
