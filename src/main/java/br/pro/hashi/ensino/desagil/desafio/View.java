@@ -62,7 +62,7 @@ public class View extends JPanel {
 
         int row, col;
 
-        Target target = model.getTarget();
+        Element target = model.getTarget();
         row = target.getRow();
         col = target.getCol();
         g.drawImage(targetImage, col * CELL_SIZE, row * CELL_SIZE, CELL_SIZE, CELL_SIZE, this);
