@@ -2,10 +2,12 @@ package br.pro.hashi.ensino.desagil.desafio;
 
 import br.pro.hashi.ensino.desagil.desafio.model.Model;
 
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
 
-public class Controller implements KeyListener {
+public class Controller implements KeyListener, ActionListener {
     private Model model;
     private View view;
 
@@ -27,5 +29,10 @@ public class Controller implements KeyListener {
     @Override
     public void keyReleased(KeyEvent event) {
         System.out.println("keyReleased");
+    }
+
+    @Override
+    public void actionPerformed(ActionEvent e) {
+        System.out.println("actionPerformed");
     }
 }
