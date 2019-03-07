@@ -5,6 +5,7 @@ import br.pro.hashi.ensino.desagil.desafio.model.*;
 import javax.swing.*;
 import java.awt.*;
 import java.net.URL;
+import java.util.Map;
 
 // Estender a classe JPanel e reescrever o método
 // paintComponent é um jeito tradicional de criar
@@ -17,17 +18,19 @@ public class View extends JPanel {
 
 
     private final Model model;
-    private final Image targetImage;
-    private final Image humanPlayerImage;
-    private final Image cpuPlayerImage;
+    private final Map<Element, Image> elementsToImages;
 
 
     public View(Model model) {
         this.model = model;
 
-        targetImage = getImage("target.png");
-        humanPlayerImage = getImage("human-player.png");
-        cpuPlayerImage = getImage("cpu-player.png");
+        // Esse jeito de construir um dicionário só pode
+        // ser usado se você não pretende mudá-lo depois.
+        elementsToImages = Map.of(
+                model.getTarget(), getImage("target.png"),
+                model.getHumanPlayer(), getImage("human-player.png"),
+                model.getCpuPlayer(), getImage("cpu-player.png")
+        );
 
         Board board = model.getBoard();
 
@@ -60,22 +63,15 @@ public class View extends JPanel {
             }
         }
 
-        int row, col;
+        for (Map.Entry<Element, Image> entry : elementsToImages.entrySet()) {
+            Element element = entry.getKey();
+            int row = element.getRow();
+            int col = element.getCol();
 
-        Element target = model.getTarget();
-        row = target.getRow();
-        col = target.getCol();
-        g.drawImage(targetImage, col * CELL_SIZE, row * CELL_SIZE, CELL_SIZE, CELL_SIZE, this);
+            Image image = entry.getValue();
 
-        CpuPlayer cpuPlayer = model.getCpuPlayer();
-        row = cpuPlayer.getRow();
-        col = cpuPlayer.getCol();
-        g.drawImage(cpuPlayerImage, col * CELL_SIZE, row * CELL_SIZE, CELL_SIZE, CELL_SIZE, this);
-
-        HumanPlayer humanPlayer = model.getHumanPlayer();
-        row = humanPlayer.getRow();
-        col = humanPlayer.getCol();
-        g.drawImage(humanPlayerImage, col * CELL_SIZE, row * CELL_SIZE, CELL_SIZE, CELL_SIZE, this);
+            g.drawImage(image, col * CELL_SIZE, row * CELL_SIZE, CELL_SIZE, CELL_SIZE, this);
+        }
 
         // Linha necessária para evitar atrasos
         // de renderização em sistemas Linux.
