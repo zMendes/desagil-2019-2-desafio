@@ -67,12 +67,12 @@ public class Board {
         } catch (IOException exception) {
             System.err.println(exception.getMessage());
             System.exit(1);
-        }
-
-        try {
-            reader.close();
-        } catch (IOException exception) {
-            System.err.println(exception.getMessage());
+        } finally {
+            try {
+                reader.close();
+            } catch (IOException exception) {
+                System.err.println(exception.getMessage());
+            }
         }
     }
 
