@@ -60,8 +60,7 @@ public class Board {
                             wall[i][j] = true;
                             break;
                         default:
-                            System.err.println("Configuração de tabuleiro deve ter apenas ' ' e '#'");
-                            System.exit(1);
+                            throw new IOException("Configuração de tabuleiro deve ter apenas ' ' e '#'");
                     }
                 }
             }
