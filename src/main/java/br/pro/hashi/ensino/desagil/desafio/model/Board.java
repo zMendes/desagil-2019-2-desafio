@@ -29,9 +29,7 @@ public class Board {
         // Constrói um leitor para ler caracteres a partir de um arquivo aberto.
         // Queremos usar o método de conveniência readLine, mas ele não existe em
         // um leitor normal, então embrulhamos ele dentro de um BufferedReader.
-        BufferedReader reader = null;
-        try {
-            reader = new BufferedReader(new InputStreamReader(stream));
+        try (BufferedReader reader = new BufferedReader(new InputStreamReader(stream))) {
 
             // Note que isto aqui é bem parecido com o que faríamos em Python!
             String[] words = reader.readLine().strip().split("\\s+");
@@ -67,12 +65,6 @@ public class Board {
         } catch (IOException exception) {
             System.err.println(exception.getMessage());
             System.exit(1);
-        } finally {
-            try {
-                reader.close();
-            } catch (IOException exception) {
-                System.err.println(exception.getMessage());
-            }
         }
     }
 
