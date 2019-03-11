@@ -65,15 +65,12 @@ public class View extends JPanel {
             }
         }
 
-        for (Map.Entry<Element, Image> entry : elementsToImages.entrySet()) {
-            Element element = entry.getKey();
+        elementsToImages.forEach((element, image) -> {
             int row = element.getRow();
             int col = element.getCol();
 
-            Image image = entry.getValue();
-
             g.drawImage(image, col * CELL_SIZE, row * CELL_SIZE, CELL_SIZE, CELL_SIZE, this);
-        }
+        });
 
         // Linha necessária para evitar atrasos
         // de renderização em sistemas Linux.
