@@ -15,7 +15,9 @@ public class Model {
 
         cpuPlayer = new CpuPlayer(8, 18, board);
 
-		chooseRandomTarget();
+        target = new Element(0, 0);
+
+        chooseRandomTarget();
     }
 
     public Board getBoard() {
@@ -35,15 +37,16 @@ public class Model {
     }
 
     public void chooseRandomTarget() {
-    	Element elements[] = {
-    		new Element(2, 2),
-			new Element(2, 16),
-			new Element(6, 16),
-			new Element(8, 6),
-			new Element(6, 6),
-			new Element(4, 14)
+    	int positions[][] = {
+    		{ 2, 2 },
+			{ 2, 16 },
+			{ 6, 16 },
+			{ 8, 6 },
+			{ 6, 6 },
+			{ 4, 14 }
     	};
-		int randomIndex = new Random().nextInt(elements.length);
-		target = elements[randomIndex];
+		int randomIndex = new Random().nextInt(positions.length);
+		target.setRow(positions[randomIndex][0]);
+		target.setCol(positions[randomIndex][1]);
 	}
 }
