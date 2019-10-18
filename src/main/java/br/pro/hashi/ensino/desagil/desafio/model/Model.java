@@ -4,9 +4,9 @@ import java.util.Random;
 
 public class Model {
     private final Board board;
-    private Element target;
     private final HumanPlayer humanPlayer;
     private final CpuPlayer cpuPlayer;
+    private Element target;
 
     public Model() {
         board = new Board("board.txt");
@@ -37,16 +37,16 @@ public class Model {
     }
 
     public void chooseRandomTarget() {
-    	int positions[][] = {
-    		{ 2, 2 },
-			{ 2, 16 },
-			{ 6, 16 },
-			{ 8, 6 },
-			{ 6, 6 },
-			{ 4, 14 }
-    	};
-		int randomIndex = new Random().nextInt(positions.length);
-		target.setRow(positions[randomIndex][0]);
-		target.setCol(positions[randomIndex][1]);
-	}
+        int positions[][] = {
+                {2, 2},
+                {2, 16},
+                {6, 16},
+                {8, 6},
+                {6, 6},
+                {4, 14}
+        };
+        int randomIndex = new Random().nextInt(positions.length);
+        target.setRow(positions[randomIndex][0]);
+        target.setCol(positions[randomIndex][1]);
+    }
 }

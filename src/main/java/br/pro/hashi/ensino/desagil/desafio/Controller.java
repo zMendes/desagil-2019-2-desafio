@@ -1,6 +1,7 @@
 package br.pro.hashi.ensino.desagil.desafio;
 
 import br.pro.hashi.ensino.desagil.desafio.model.CpuPlayer;
+import br.pro.hashi.ensino.desagil.desafio.model.Element;
 import br.pro.hashi.ensino.desagil.desafio.model.HumanPlayer;
 import br.pro.hashi.ensino.desagil.desafio.model.Model;
 
@@ -65,6 +66,18 @@ public class Controller implements KeyListener, ActionListener {
     @Override
     public void actionPerformed(ActionEvent e) {
         CpuPlayer cpuPlayer = model.getCpuPlayer();
+        HumanPlayer humanPlayer = model.getHumanPlayer();
+        Element target = model.getTarget();
+
+        if (humanPlayer.getRow() == target.getRow() && humanPlayer.getCol() == target.getCol()) {
+            humanPlayer.addPoint();
+            model.chooseRandomTarget();
+        }
+
+        if (cpuPlayer.getRow() == target.getRow() && cpuPlayer.getCol() == target.getCol()) {
+            cpuPlayer.addPoint();
+            model.chooseRandomTarget();
+        }
 
         cpuPlayer.move();
 
